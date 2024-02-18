@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import { Layout } from 'antd';
+import { Content } from 'antd/es/layout/layout';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Navbar from './Components/Navbar/Navbar';
+import AllUsers from './pages/AllUsers';
+import CreateUser from './pages/CreateUser';
+import EditUser from './pages/EditUser';
+import ViewUser from './pages/ShowUser';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout className="App">
+      <Navbar />
+      <Content style={{ padding: '48px' }}>
+        <Routes>
+          <Route path="/" element={<Navigate to="/users" />} />
+          <Route path="/users" element={<AllUsers />} />
+          <Route path="/users/create" element={<CreateUser />} />
+          <Route path="/users/:userId" element={<ViewUser />} />
+          <Route path="/users/edit/:userId" element={<EditUser />} />
+        </Routes>
+      </Content>
+      
+    </Layout>
   );
 }
 
