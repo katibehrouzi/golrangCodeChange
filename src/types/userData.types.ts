@@ -23,12 +23,23 @@ export interface UserDataType {
   }
 
   export interface UserData2Type {
-    key: number,
-    name: string,
-    username: string,
-    email: string,
-    address: string,
-    phone: string,
-    website: string,
-    company: string
+    [userObjectKeyE.key]: number,
+    [userObjectKeyE.name]: string,
+    [userObjectKeyE.username]: string,
+    [userObjectKeyE.email]: string,
+    [userObjectKeyE.address]: string,
+    [userObjectKeyE.phone]: string,
+    [userObjectKeyE.website]: string,
+    [userObjectKeyE.company]: string
+  }
+
+  export enum userObjectKeyE {
+    key,
+    name,
+    username,
+    email,
+    address,
+    phone,
+    website,
+    company
   }

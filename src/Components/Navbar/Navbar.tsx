@@ -20,6 +20,7 @@ const Navbar: FC = () => {
                 defaultSelectedKeys={location.pathname === "/users/create" ? ['2'] : ['1']}
                 items={items}
                 style={{ flex: 1, minWidth: 0 }}
+                selectedKeys={location.pathname === "/users/create" ? ['2'] : ['1']}
             />
         </Header>
     )

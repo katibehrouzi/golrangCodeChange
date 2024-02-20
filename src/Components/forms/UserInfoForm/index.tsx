@@ -1,17 +1,22 @@
 import { FC } from "react";
 import { Button, Form, Input } from "antd";
+import { UserDataType } from "../../../types/userData.types";
 
-const UserInfoForm: FC = () => {
-    const onFinish = (values: any) => {
+const UserInfoForm: FC<{
+    formInitialValues? : UserDataType
+    loading: boolean
+    onFormSubmit: (values: UserDataType) => void
+}> = (props) => {
+    const onFinish = (values: UserDataType) => {
         console.log('Success:', values);
     };
     return (
         <Form
             name="complex-form"
-            onFinish={onFinish}
+            onFinish={props.onFormSubmit}
             labelCol={{ span: 3 }}
             wrapperCol={{ span: 16 }}
-            initialValues={{lng: ""}}
+            initialValues={props.formInitialValues ? props.formInitialValues : {}}
         >
             <Form.Item label="Name">
                 <Form.Item
@@ -129,7 +134,7 @@ const UserInfoForm: FC = () => {
                 </Form.Item>
             </Form.Item>
             <Form.Item label=" " colon={false}>
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" loading={props.loading}>
                     Submit
                 </Button>
             </Form.Item>

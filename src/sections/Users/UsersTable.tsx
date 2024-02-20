@@ -1,7 +1,7 @@
 import { Button, Space, Table, TableProps } from "antd";
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { UserData2Type } from "../../types/userData.types";
+import { UserData2Type, userObjectKeyE } from "../../types/userData.types";
 
 const UserTable: FC<{
     showDeleteConfirm: (userId: number) => void
@@ -10,43 +10,43 @@ const UserTable: FC<{
     const columns: TableProps<UserData2Type>['columns'] = [
         {
             title: '',
-            dataIndex: 'key',
+            dataIndex: [userObjectKeyE.key],
             rowScope: 'row',
-            width: '40px'
+            width: '50px'
         },
         {
           title: 'Name',
-          dataIndex: 'name',
+          dataIndex: [userObjectKeyE.name],
           key: 'name',
         },
         {
             title: 'Username',
-            dataIndex: 'username',
+            dataIndex: [userObjectKeyE.username],
             key: 'username',
         },
         {
           title: 'Email',
-          dataIndex: 'email',
+          dataIndex: [userObjectKeyE.email],
           key: 'email',
         },
         {
           title: 'Address',
-          dataIndex: 'address',
+          dataIndex: [userObjectKeyE.address],
           key: 'address',
         },
         {
             title: 'Phone',
-            dataIndex: 'phone',
+            dataIndex: [userObjectKeyE.phone],
             key: 'phone',
         },
         {
             title: 'Website',
-            dataIndex: 'website',
+            dataIndex: [userObjectKeyE.website],
             key: 'website',
         },
         {
             title: 'Company',
-            dataIndex: 'company',
+            dataIndex: [userObjectKeyE.company],
             key: 'company',
         },
         {
@@ -55,9 +55,9 @@ const UserTable: FC<{
             fixed: 'right',
             render: (_, record) => (
               <Space size="middle">
-                <Link to={`/users/${record.key}`}>View User</Link>
-                <Link to={`/users/edit/${record.key}`}>Edit User</Link>
-                <Button type="primary" danger onClick={() => props.showDeleteConfirm(record.key)}>Delete</Button>
+                <Link to={`/users/${record[userObjectKeyE.key]}`}>View User</Link>
+                <Link to={`/users/edit/${record[userObjectKeyE.key]}`}>Edit User</Link>
+                <Button type="primary" danger onClick={() => props.showDeleteConfirm(record[userObjectKeyE.key])}>Delete</Button>
               </Space>
             ),
           },
